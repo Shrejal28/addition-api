@@ -3,15 +3,16 @@ pipeline {
     agent any
 
     environment {
-        PYTHON = 'C:\\Users\\Shrejal\\AppData\\Local\\Programs\\Python\\Python311\\python.exe'
+        PYTHON  = 'C:\\Users\\Shrejal\\AppData\\Local\\Programs\\Python\\Python311\\python.exe'
+        GIT_URL = 'https://github.com/Shrejal28/addition-api.git'
     }
 
     stages {
 
         stage('Checkout') {
             steps {
-                echo '=== Cloning from Git ==='
-                checkout scm
+                echo '=== Cloning from GitHub ==='
+                git branch: 'main', credentialsId: 'github-creds', url: 'https://github.com/Shrejal28/addition-api.git'
             }
         }
 
